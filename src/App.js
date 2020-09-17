@@ -5,6 +5,10 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome onboard</h1>
+
+      {/**Header */}
+      {/**Posts */}
+      {/**Post */}
     </div>
   );
 }
