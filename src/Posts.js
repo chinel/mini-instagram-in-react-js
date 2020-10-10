@@ -7,7 +7,7 @@ function Posts({ userName, imageUrl, caption }) {
       <div className="post__header">
         <Avatar
           className="post__headerAvatar"
-          alt="TestUserName"
+          alt={userName}
           src="/static/images/avatar/1.jpg"
         />
         <h3>{userName}</h3>
