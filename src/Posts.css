@@ -1,3 +1,9 @@
+.post {
+  width: 500px;
+  background-color: #fff;
+  border: 1px solid lightgray;
+}
+
 .post__image {
   width: 100%;
   object-fit: contain;
@@ -5,4 +11,15 @@
 
 .post__text {
   font-weight: normal;
+  padding: 20px;
+}
+
+.post__header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.post__headerAvatar {
+  margin-right: 10px;
 }
