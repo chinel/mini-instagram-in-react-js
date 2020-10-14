@@ -6,6 +6,7 @@ import Modal from "@material-ui/core/Modal";
 
 function App() {
   const [posts, setPost] = useState([]);
+  const [close, setClose] = useState(false);
 
   useEffect(() => {
     db.collection("posts").onSnapshot((snapshot) => {
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <div className="app">
-      <Modal open={open} onClose={handleClose}>
+      <Modal open={open} onClose={() => setClose(true)}>
         <div style={modalStyle} className={classes.paper}>
           <h2>I am a body</h2>
           <SimpleModal />
