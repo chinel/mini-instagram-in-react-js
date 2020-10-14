@@ -8,7 +8,12 @@ function App() {
 
   useEffect(() => {
     db.collection("posts").onSnapshot((snapshot) => {
-      setPost(snapshot.docs.map((doc) => doc.data()));
+      setPost(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          post: doc.data(),
+        }))
+      );
     });
   }, [posts]);
 
@@ -22,9 +27,9 @@ function App() {
           alt=""
         />
       </div>
-      {posts.map((post) => (
+      {posts.map(({ id, post }) => (
         <Posts
-          key={post.id}
+          key={id}
           userName={post.username}
           caption={post.caption}
           imageUrl={post.imageUrl}
