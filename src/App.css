@@ -15,3 +15,13 @@
 .app__headerImage {
   object-fit: contain;
 }
+
+.app__modalHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.app__signup {
+  display: flex;
+  flex-direction: column;
+}

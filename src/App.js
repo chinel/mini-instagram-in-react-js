@@ -52,16 +52,17 @@ function App() {
     <div className="app">
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
-          <div className="app_modalHeader">
+          <div className="app__modalHeader">
             <img
               className="app__headerImage"
               src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
               alt=""
             />
           </div>
-          <form className="app_signup">
-            <input type="email" />
-            <input type="password" />
+          <form className="app__signup">
+            <input type="text" placeholder="Username" />
+            <input type="email" placeholder="Email Address" />
+            <input type="password" placeholder="Password" />
             <button>Sign up</button>
           </form>
         </div>
