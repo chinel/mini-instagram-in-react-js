@@ -56,6 +56,7 @@ const ImageUpload = ({ username }) => {
 
   return (
     <div>
+      <progress value={progress} max="100" />
       <input
         type="text"
         placeholder="Enter caption...."
