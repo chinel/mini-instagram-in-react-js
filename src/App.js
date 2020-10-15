@@ -57,14 +57,16 @@ function App() {
   }, [user]);
 
   useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) => {
-      setPost(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          post: doc.data(),
-        }))
-      );
-    });
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        setPost(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            post: doc.data(),
+          }))
+        );
+      });
   }, [posts]);
 
   const signUp = (event) => {
