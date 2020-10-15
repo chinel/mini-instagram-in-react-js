@@ -5,6 +5,7 @@ import Posts from "./Posts";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button } from "@material-ui/core";
+import ImageUpload from "./ImageUpload";
 
 function getModalStyle() {
   const top = 50;
@@ -152,7 +153,7 @@ function App() {
           </form>
         </div>
       </Modal>
-
+      <ImageUpload />
       <div className="app__header">
         <img
           className="app__headerImage"
