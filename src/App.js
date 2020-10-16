@@ -172,14 +172,16 @@ function App() {
         )}
       </div>
 
-      {posts.map(({ id, post }) => (
-        <Posts
-          key={id}
-          userName={post.username}
-          caption={post.caption}
-          imageUrl={post.imageUrl}
-        />
-      ))}
+      <div className="app_posts">
+        {posts.map(({ id, post }) => (
+          <Posts
+            key={id}
+            userName={post.username}
+            caption={post.caption}
+            imageUrl={post.imageUrl}
+          />
+        ))}
+      </div>
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (
