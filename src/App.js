@@ -155,11 +155,7 @@ function App() {
           </form>
         </div>
       </Modal>
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        <h3>Sorry you need to login to upload</h3>
-      )}
+
       <div className="app__header">
         <img
           className="app__headerImage"
@@ -183,6 +179,11 @@ function App() {
           imageUrl={post.imageUrl}
         />
       ))}
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ) : (
+        <h3>Sorry you need to login to upload</h3>
+      )}
     </div>
   );
 }
