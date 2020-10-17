@@ -173,7 +173,7 @@ function App() {
         )}
       </div>
 
-      <div className="app_posts">
+      <div className="app__posts">
         {posts.map(({ id, post }) => (
           <Posts
             key={id}
@@ -184,7 +184,18 @@ function App() {
         ))}
       </div>
 
-      <InstagramEmbed />
+      <InstagramEmbed
+        url="https://instagr.am/p/Zw9o4/"
+        maxWidth={320}
+        hideCaption={false}
+        containerTagName="div"
+        protocol=""
+        injectScript
+        onLoading={() => {}}
+        onSuccess={() => {}}
+        onAfterRender={() => {}}
+        onFailure={() => {}}
+      />
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (
