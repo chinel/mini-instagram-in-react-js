@@ -26,3 +26,22 @@
 .post__headerAvatar {
   margin-right: 10px;
 }
+
+.post__commentBox {
+  display: flex;
+  margin-top: 10px;
+}
+
+.post__input {
+  flex: 1; /*here we say let the input take a better part of the width while the button takes less */
+  border: none;
+  padding: 10px;
+  border-top: 1px solid lightgray;
+}
+
+.post__button {
+  flex: 0;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  color: #60a2a3;
+}
