@@ -21,6 +21,10 @@ function Posts({ postId, userName, imageUrl, caption }) {
           );
         });
     }
+
+    return () => {
+      unsubscribe();
+    };
   }, [postId]);
 
   return (
