@@ -45,3 +45,7 @@
   border-bottom: 1px solid lightgray;
   color: #60a2a3;
 }
+
+.post_comments {
+  padding: 20px;
+}
