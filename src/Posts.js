@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Posts.css";
 import Avatar from "@material-ui/core/Avatar";
-import { db } from "./firebase";
+import { db, firebase } from "./firebase";
 
-function Posts({ postId, userName, imageUrl, caption }) {
+function Posts({ postId, user, userName, imageUrl, caption }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 
@@ -28,7 +28,16 @@ function Posts({ postId, userName, imageUrl, caption }) {
     };
   }, [postId]);
 
-  const postComment = (event) => {};
+  const postComment = (event) => {
+    event.preventDefault();
+
+    db.collection("posts").doc(postId).collection("comments").add({
+      text: comment,
+      username: user.displayName,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    setComment("");
+  };
 
   return (
     <div className="post">
@@ -53,7 +62,7 @@ function Posts({ postId, userName, imageUrl, caption }) {
           </p>
         ))}
       </div>
-      <form className="post__commentBox">
+      <form className="post__commentBox" onSubmit={postComment}>
         <input
           type="text"
           className="post__input"
@@ -61,12 +70,7 @@ function Posts({ postId, userName, imageUrl, caption }) {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
-        <button
-          disabled={!comment}
-          type="submit"
-          className="post__button"
-          onClick={postComment}
-        >
+        <button disabled={!comment} type="submit" className="post__button">
           Post
         </button>
       </form>
