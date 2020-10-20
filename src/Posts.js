@@ -13,6 +13,7 @@ function Posts({ postId, user, userName, imageUrl, caption }) {
       .collection("posts")
       .doc(postId)
       .collection("comments")
+      .orderBy("timestamp","desc")
       .onSnapshot((snapshot) =>
         setComments(
           snapshot.docs.map((doc) => {
@@ -59,7 +60,7 @@ function Posts({ postId, user, userName, imageUrl, caption }) {
         <strong>{userName}</strong> {caption}
       </h4>
 
-      <div className="post-comments">
+      <div className="post__comments">
         {comments &&
           comments.length > 0 &&
           comments.map(({ id, comments }) => (
