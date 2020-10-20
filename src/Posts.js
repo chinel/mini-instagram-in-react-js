@@ -13,7 +13,7 @@ function Posts({ postId, user, userName, imageUrl, caption }) {
       .collection("posts")
       .doc(postId)
       .collection("comments")
-      .orderBy("timestamp","desc")
+      .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) =>
         setComments(
           snapshot.docs.map((doc) => {
@@ -69,18 +69,22 @@ function Posts({ postId, user, userName, imageUrl, caption }) {
             </p>
           ))}
       </div>
-      <form className="post__commentBox" onSubmit={postComment}>
-        <input
-          type="text"
-          className="post__input"
-          placeholder="Add a comment"
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        />
-        <button disabled={!comment} type="submit" className="post__button">
-          Post
-        </button>
-      </form>
+      {user ? (
+        <form className="post__commentBox" onSubmit={postComment}>
+          <input
+            type="text"
+            className="post__input"
+            placeholder="Add a comment"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <button disabled={!comment} type="submit" className="post__button">
+            Post
+          </button>
+        </form>
+      ) : (
+        <p class="post__commentLogin">Please login to drop a comment</p>
+      )}
     </div>
   );
 }
