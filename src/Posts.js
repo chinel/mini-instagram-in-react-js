@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "./Posts.css";
 import Avatar from "@material-ui/core/Avatar";
-import { db, firebase } from "./firebase";
+import { db } from "./firebase";
+import firebase from "firebase";
 
 function Posts({ postId, user, userName, imageUrl, caption }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 
   useEffect(() => {
-    let unsubscribe;
-    if (postId) {
-      unsubscribe = db
-        .collection("posts")
-        .doc(postId)
-        .collection("comments")
-        .onSnapshot((snapshot) => {
-          setComments(
-            snapshot.docs.map((doc) => {
-              doc.data();
-            })
-          );
-        });
-    }
+    let unsubscribe = db
+      .collection("posts")
+      .doc(postId)
+      .collection("comments")
+      .onSnapshot((snapshot) =>
+        setComments(
+          snapshot.docs.map((doc) => {
+            console.log(doc.data());
+            return {
+              id: doc.id,
+              comments: doc.data(),
+            };
+          })
+        )
+      );
 
     return () => {
       unsubscribe();
@@ -29,7 +31,9 @@ function Posts({ postId, user, userName, imageUrl, caption }) {
   }, [postId]);
 
   const postComment = (event) => {
+    console.log(comments);
     event.preventDefault();
+    console.log(postId);
 
     db.collection("posts").doc(postId).collection("comments").add({
       text: comment,
@@ -56,11 +60,13 @@ function Posts({ postId, user, userName, imageUrl, caption }) {
       </h4>
 
       <div className="post-comments">
-        {comments.map((comment) => (
-          <p>
-            <strong>{comment.username}</strong> {comment.text}
-          </p>
-        ))}
+        {comments &&
+          comments.length > 0 &&
+          comments.map(({ id, comments }) => (
+            <p key={id}>
+              <strong>{comments.username}</strong> {comments.text}
+            </p>
+          ))}
       </div>
       <form className="post__commentBox" onSubmit={postComment}>
         <input
