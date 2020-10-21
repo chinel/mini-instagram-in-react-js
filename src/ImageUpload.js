@@ -9,7 +9,7 @@ const ImageUpload = ({ username }) => {
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
   const handleFileChange = (e) => {
-    console.log(e.target.files);
+    //console.log(e.target.files);
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
@@ -29,7 +29,7 @@ const ImageUpload = ({ username }) => {
       },
       (error) => {
         //error function
-        console.log(error);
+       // console.log(error);
         alert(error.message);
       },
       () => {

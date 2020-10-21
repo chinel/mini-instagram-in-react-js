@@ -17,7 +17,7 @@ function Posts({ postId, user, userName, imageUrl, caption }) {
       .onSnapshot((snapshot) =>
         setComments(
           snapshot.docs.map((doc) => {
-            console.log(doc.data());
+            //console.log(doc.data());
             return {
               id: doc.id,
               comments: doc.data(),
@@ -32,9 +32,9 @@ function Posts({ postId, user, userName, imageUrl, caption }) {
   }, [postId]);
 
   const postComment = (event) => {
-    console.log(comments);
+   // console.log(comments);
     event.preventDefault();
-    console.log(postId);
+    //console.log(postId);
 
     db.collection("posts").doc(postId).collection("comments").add({
       text: comment,
